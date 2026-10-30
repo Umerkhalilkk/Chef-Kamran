@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chef Kamran | Menu &amp; Prices</title>
+<meta name="description" content="Chef Kamran menu with prices: fast food, burgers, broast, wings and french fries specials.">
+<meta name="theme-color" content="#f4510b">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%23f4510b'/%3E%3Cg fill='%2317110d'%3E%3Ccircle cx='22' cy='25' r='9'/%3E%3Ccircle cx='32' cy='21' r='10'/%3E%3Ccircle cx='42' cy='25' r='9'/%3E%3Crect x='20' y='27' width='24' height='18' rx='3'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>document.documentElement.className += ' js';</script>
+<style>
+:root {
+  --ink: #17110d;
+  --orange: #f4510b;
+  --yellow: #ffc72c;
+  --cream: #fff4e3;
+  --paper: #fffaf2;
+  --sun: #ffe7a1;
+  --tile: #2a211b;
+  --display: "Anton", Impact, "Arial Narrow", sans-serif;
+  --body: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --ease: cubic-bezier(.2, .8, .2, 1);
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 122px; scrollbar-gutter: stable; -webkit-text-size-adjust: 100%; }
+@media (min-width: 900px) { html { scroll-padding-top: 84px; } }
+html.lock { overflow: hidden; }
+body { margin: 0; background: var(--cream); color: var(--ink); font: 400 16px/1.55 var(--body); -webkit-font-smoothing: antialiased; }
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+ul { list-style: none; margin: 0; padding: 0; }
+h1, h2, h3, h4, p { margin: 0; }
+[hidden] { display: none !important; }
+.wrap { width: min(1240px, 100% - 32px); margin-inline: auto; }
+@media (min-width: 700px) { .wrap { width: min(1240px, 100% - 64px); } }
+.skip { position: absolute; left: 16px; top: -60px; z-index: 200; padding: 10px 16px; border-radius: 8px; background: var(--ink); color: var(--cream); font-size: 14px; text-decoration: none; }
+.skip:focus { top: 12px; }
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+.d { font-family: var(--display); font-weight: 400; text-transform: uppercase; letter-spacing: .015em; }
+
+/* ---------- header ---------- */
+.head { position: sticky; top: 0; z-index: 50; background: var(--paper); border-bottom: 4px solid var(--orange); }
+.hbar { display: grid; align-items: center; grid-template-columns: 44px 1fr 44px; grid-template-areas: "burger logo pin" "tabs tabs tabs"; column-gap: 8px; padding-top: 10px; }
+.menu-btn { grid-area: burger; }
+.logo { grid-area: logo; justify-self: center; }
+.pin { grid-area: pin; }
+.tabs { grid-area: tabs; }
+.round { width: 44px; height: 44px; display: grid; place-items: center; border: 0; border-radius: 50%; cursor: pointer; text-decoration: none; transition: background .25s, color .25s, transform .3s var(--ease); }
+.round svg { width: 22px; height: 22px; }
+.menu-btn { background: var(--ink); color: var(--cream); }
+.pin { background: var(--yellow); color: var(--ink); }
+.logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; line-height: 1; }
+.mark { width: 42px; height: 42px; flex: none; border-radius: 50%; background: var(--orange); display: grid; place-items: center; transition: transform .5s var(--ease); }
+.mark svg { width: 26px; height: 26px; fill: var(--ink); }
+.word { font-family: var(--display); font-size: 29px; letter-spacing: .02em; text-transform: uppercase; padding-top: 2px; }
+.word b { font-weight: 400; color: var(--orange); }
+.tabs { display: flex; overflow-x: auto; scrollbar-width: none; gap: 8px; padding: 10px 0 12px; }
+.tabs::-webkit-scrollbar { display: none; }
+.tabs a:first-child { margin-left: auto; }
+.tabs a:last-child { margin-right: auto; }
+.tabs a { flex: none; display: flex; align-items: center; height: 36px; padding: 0 15px; border: 2px solid var(--ink); border-radius: 99px; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; text-decoration: none; white-space: nowrap; transition: background .25s, color .25s, border-color .25s, transform .3s var(--ease); }
+.tabs a.on { background: var(--ink); color: var(--yellow); }
+@media (hover: hover) {
+  .menu-btn:hover { background: var(--orange); color: var(--ink); transform: rotate(-8deg); }
+  .pin:hover { background: var(--orange); transform: rotate(8deg); }
+  .logo:hover .mark { transform: rotate(-12deg) scale(1.06); }
+  .tabs a:not(.on):hover { background: var(--yellow); }
+}
+@media (min-width: 900px) {
+  .hbar { grid-template-columns: auto 1fr auto; grid-template-areas: "logo tabs pin"; height: 80px; padding-top: 0; column-gap: 24px; }
+  .menu-btn { display: none; }
+  .logo { justify-self: start; }
+  .tabs { padding: 0; justify-content: center; overflow: visible; }
+  .tabs a { border-color: transparent; height: 40px; padding: 0 18px; font-size: 13px; }
+  .tabs a.on { border-color: var(--ink); }
+}
+
+/* ---------- side menu ---------- */
+.scrim { position: fixed; inset: 0; z-index: 90; background: rgba(23, 17, 13, .6); opacity: 0; visibility: hidden; transition: opacity .4s ease, visibility 0s .4s; }
+.drawer { position: fixed; top: 0; bottom: 0; left: 0; z-index: 100; width: min(90vw, 380px); display: flex; flex-direction: column; padding: 14px 26px 28px; overflow-y: auto; background: var(--ink); color: var(--cream); transform: translateX(-102%); visibility: hidden; transition: transform .5s var(--ease), visibility 0s .5s; }
+.drawer-open .scrim { opacity: 1; visibility: visible; transition: opacity .4s ease; }
+.drawer-open .drawer { transform: none; visibility: visible; transition: transform .5s var(--ease); }
+.drawer-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 26px; }
+.drawer-head .round { background: var(--cream); color: var(--ink); }
+.drawer nav a { display: flex; align-items: baseline; gap: 14px; padding: 14px 0; border-bottom: 1px solid rgba(255, 244, 227, .14); font-family: var(--display); font-size: 38px; line-height: 1.05; text-transform: uppercase; text-decoration: none; transition: color .25s, padding-left .35s var(--ease); }
+.drawer nav a small { font: 700 12px var(--body); letter-spacing: .1em; color: var(--yellow); }
+.drawer-foot { margin-top: auto; padding-top: 28px; font-size: 13px; color: rgba(255, 244, 227, .6); }
+@media (hover: hover) { .drawer nav a:hover { color: var(--orange); padding-left: 10px; } }
+
+/* ---------- hero ---------- */
+.hero { position: relative; overflow: hidden; background: var(--ink); transition: background-color .7s ease; --ctrl: var(--cream); --track: rgba(255, 244, 227, .28); --hbg: var(--ink); }
+.hero[data-t="2"] { background: var(--orange); --ctrl: var(--ink); --track: rgba(23, 17, 13, .25); --hbg: var(--orange); }
+.hero[data-t="3"] { background: var(--yellow); --ctrl: var(--ink); --track: rgba(23, 17, 13, .22); --hbg: var(--yellow); }
+.stage { display: grid; }
+.slide { grid-area: 1 / 1; opacity: 0; visibility: hidden; transition: opacity .6s ease, visibility 0s .6s; }
+.slide.is-active { opacity: 1; visibility: visible; transition: opacity .6s ease; }
+.s1 { --fg: var(--cream); --acc: var(--orange); --btn-bg: var(--orange); --btn-fg: var(--ink); --stk-bg: var(--yellow); --stk-fg: var(--ink); --blob: rgba(255, 255, 255, .07); }
+.s2 { --fg: var(--ink); --acc: #fff; --btn-bg: var(--ink); --btn-fg: var(--yellow); --stk-bg: var(--yellow); --stk-fg: var(--ink); --blob: rgba(255, 255, 255, .22); }
+.s3 { --fg: var(--ink); --acc: var(--ink); --btn-bg: var(--ink); --btn-fg: var(--yellow); --stk-bg: var(--ink); --stk-fg: var(--yellow); --blob: rgba(255, 255, 255, .45); }
+.inner { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); gap: clamp(24px, 4vw, 64px); align-items: center; padding-block: clamp(36px, 5vw, 76px) clamp(84px, 8vw, 112px); }
+.copy { color: var(--fg); }
+.eyebrow { display: inline-block; padding: 7px 16px; border-radius: 99px; background: var(--stk-bg); color: var(--stk-fg); font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.title { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: clamp(50px, 6.2vw, 94px); line-height: .92; letter-spacing: .01em; margin: 22px 0 20px; }
+.title span { display: block; }
+.title .acc { color: var(--acc); }
+.s3 .title .acc { color: transparent; -webkit-text-stroke: 3px var(--ink); }
+@supports not (-webkit-text-stroke: 1px #000) { .s3 .title .acc { color: var(--ink); } }
+.lead { max-width: 38ch; font-size: clamp(15px, 1.4vw, 18px); opacity: .88; }
+.btn { display: inline-flex; align-items: center; gap: 12px; height: 56px; padding: 0 30px; border: 0; border-radius: 99px; background: var(--btn-bg, var(--ink)); color: var(--btn-fg, var(--cream)); font: 700 14px var(--body); letter-spacing: .08em; text-transform: uppercase; text-decoration: none; cursor: pointer; box-shadow: 0 5px 0 rgba(0, 0, 0, .35); transition: transform .25s var(--ease), box-shadow .25s, background .25s; }
+.btn svg { width: 18px; height: 18px; }
+.btn:active { transform: translateY(3px); box-shadow: 0 2px 0 rgba(0, 0, 0, .35); }
+@media (hover: hover) { .btn:hover { transform: translateY(-3px); box-shadow: 0 8px 0 rgba(0, 0, 0, .35); } .btn:active { transform: translateY(3px); } }
+.copy .btn { margin-top: 32px; }
+.slide .eyebrow, .slide .title, .slide .lead, .slide .btn { opacity: 0; transform: translateY(22px); }
+.slide .eyebrow, .slide .title, .slide .lead { transition: opacity .6s ease, transform .9s var(--ease); }
+.slide .btn { transition: opacity .6s ease, transform .9s var(--ease), box-shadow .25s, background .25s; }
+.slide.is-active .eyebrow { opacity: 1; transform: none; transition-delay: .1s; }
+.slide.is-active .title { opacity: 1; transform: none; transition-delay: .2s; }
+.slide.is-active .lead { opacity: 1; transform: none; transition-delay: .3s; }
+.slide.is-active .btn { opacity: 1; transform: none; transition-delay: .4s, .4s, 0s, 0s; }
+.slide.is-active .btn:active { transition-delay: 0s; transform: translateY(3px); }
+.shotwrap { position: relative; padding: clamp(10px, 2vw, 26px); }
+.shotwrap::before { content: ""; position: absolute; inset: 2% -2% -4% 6%; border-radius: 50%; background: var(--blob); }
+.shot { position: relative; aspect-ratio: 3 / 2; overflow: hidden; border: clamp(5px, .8vw, 9px) solid var(--cream); border-radius: clamp(18px, 2.4vw, 30px); background: var(--tile); box-shadow: 0 34px 60px -24px rgba(0, 0, 0, .55); opacity: 0; transform: rotate(-7deg) scale(.9) translateY(20px); transition: opacity .6s ease, transform 1s var(--ease); }
+.slide.is-active .shot { opacity: 1; transform: rotate(-2.5deg); transition-delay: .15s; }
+.shot img { width: 100%; height: 100%; object-fit: cover; }
+.tag { position: absolute; left: 12px; bottom: 12px; padding: 7px 14px; border-radius: 99px; background: var(--ink); color: var(--cream); font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+.tag b { color: var(--yellow); margin-right: 8px; }
+.sticker { position: absolute; z-index: 2; top: 0; right: 0; width: clamp(80px, 9vw, 116px); aspect-ratio: 1; display: grid; place-items: center; padding: 8px; border-radius: 50%; background: var(--stk-bg); color: var(--stk-fg); font-family: var(--display); font-size: clamp(19px, 2.1vw, 28px); line-height: 1; text-align: center; text-transform: uppercase; transform: rotate(12deg); box-shadow: 0 10px 24px -8px rgba(0, 0, 0, .45); }
+.slide.is-active .sticker { animation: floaty 3.4s ease-in-out infinite; }
+@keyframes floaty { 50% { transform: rotate(7deg) translateY(-7px); } }
+@media (hover: hover) { .slide.is-active .shotwrap:hover .shot { transform: rotate(0) scale(1.025); transition-delay: 0s; } }
+.ctrlwrap { position: absolute; left: 0; right: 0; bottom: 22px; margin-inline: auto; display: flex; align-items: center; justify-content: space-between; }
+.dots { display: flex; gap: 8px; }
+.dot { width: 46px; padding: 16px 0; border: 0; background: none; cursor: pointer; }
+.dot i { display: block; position: relative; height: 5px; border-radius: 5px; background: var(--track); overflow: hidden; transition: background .7s; }
+.dot i::after { content: ""; position: absolute; inset: 0; border-radius: 5px; background: var(--ctrl); transform: scaleX(0); transform-origin: left; }
+.dot.on i::after { animation: fill var(--dur, 6500ms) linear forwards; }
+.hero.paused .dot.on i::after { animation-play-state: paused; }
+@keyframes fill { to { transform: scaleX(1); } }
+.arrows { display: flex; gap: 10px; }
+.arrow { width: 50px; height: 50px; display: grid; place-items: center; border: 2px solid var(--ctrl, var(--ink)); border-radius: 50%; background: transparent; color: var(--ctrl, var(--ink)); cursor: pointer; transition: background .25s, color .25s, border-color .7s, transform .3s var(--ease); }
+.arrow svg { width: 20px; height: 20px; }
+.arrow:active { transform: scale(.92); }
+@media (hover: hover) { .arrow:hover { background: var(--ctrl, var(--ink)); color: var(--hbg, var(--cream)); } }
+@media (max-width: 820px) {
+  .inner { grid-template-columns: 1fr; gap: 12px; padding-block: 32px 84px; }
+  .title { font-size: clamp(46px, 15vw, 82px); margin: 18px 0 16px; }
+  .copy .btn { margin-top: 24px; }
+  .shotwrap { padding: 18px 8px 8px; }
+  .slide.is-active .shot { transform: rotate(-1.5deg); }
+  .sticker { top: 6px; right: 6px; }
+}
+
+/* ---------- ticker ---------- */
+.ticker { overflow: hidden; background: var(--ink); color: var(--yellow); border-top: 4px solid var(--ink); white-space: nowrap; }
+.ticker-track { display: inline-flex; padding-block: 14px; animation: tick 34s linear infinite; }
+.ticker:hover .ticker-track { animation-play-state: paused; }
+.ticker span { display: inline-flex; align-items: center; font-family: var(--display); font-size: 22px; letter-spacing: .06em; text-transform: uppercase; }
+.ticker span::after { content: ""; width: 10px; height: 10px; margin-inline: 26px; border-radius: 50%; background: var(--orange); }
+@keyframes tick { to { transform: translateX(-50%); } }
+
+/* ---------- menu ---------- */
+.band { padding-block: clamp(56px, 8vw, 104px); }
+.band.fast { background: var(--cream); }
+.band.fries { background: var(--sun); }
+.cat-head { display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 14px 20px; margin-bottom: clamp(28px, 4vw, 48px); }
+.cat-head h2 { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: clamp(48px, 7.4vw, 100px); line-height: .9; letter-spacing: .01em; }
+.cat-head h2::after { content: ""; display: block; width: 90px; height: 9px; margin-top: 16px; border-radius: 9px; background: var(--orange); }
+.badge { padding: 9px 18px; border-radius: 99px; background: var(--ink); color: var(--yellow); font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; transform: rotate(-3deg); white-space: nowrap; }
+.grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px 22px; }
+@media (max-width: 1000px) { .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 700px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 12px; } }
+.grid li { display: flex; }
+.card { display: flex; flex-direction: column; width: 100%; padding: 8px; border: 0; border-radius: 26px; background: #fff; text-align: left; cursor: pointer; box-shadow: 0 1px 0 rgba(23, 17, 13, .06), 0 16px 30px -18px rgba(70, 30, 0, .5); transition: transform .45s var(--ease), box-shadow .45s var(--ease); -webkit-tap-highlight-color: transparent; }
+.pic { position: relative; display: block; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 19px; background: var(--tile); }
+.pic img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
+.pic img.missing { visibility: hidden; }
+.num { position: absolute; top: 10px; left: 10px; width: 38px; height: 38px; display: grid; place-items: center; border-radius: 50%; background: var(--yellow); color: var(--ink); font-family: var(--display); font-size: 17px; line-height: 1; box-shadow: 0 3px 0 rgba(0, 0, 0, .25); font-variant-numeric: tabular-nums; }
+.view { position: absolute; right: 10px; bottom: 10px; padding: 8px 15px; border-radius: 99px; background: var(--ink); color: var(--yellow); font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; opacity: 0; transform: translateY(10px); transition: opacity .3s, transform .45s var(--ease); }
+.body { display: flex; flex: 1; flex-direction: column; gap: 12px; padding: 14px 10px 10px; }
+.name { font-family: var(--display); font-size: clamp(19px, 1.9vw, 23px); line-height: 1.08; letter-spacing: .015em; text-transform: uppercase; }
+.price { align-self: flex-start; margin-top: auto; padding: 6px 15px; border-radius: 99px; background: var(--yellow); color: var(--ink); font: 700 14px/1.3 var(--body); font-variant-numeric: tabular-nums; transition: background .3s, transform .45s var(--ease); }
+@media (max-width: 480px) { .card { border-radius: 20px; padding: 6px; } .pic { border-radius: 15px; } .body { padding: 11px 6px 6px; } .name { font-size: 17px; } .num { width: 32px; height: 32px; font-size: 14px; } }
+@media (hover: hover) {
+  .card:hover { transform: translateY(-9px); box-shadow: 0 0 0 3px var(--orange), 0 30px 40px -20px rgba(70, 30, 0, .55); }
+  .card:hover .pic img { transform: scale(1.09); }
+  .card:hover .view { opacity: 1; transform: none; }
+  .card:hover .price { background: var(--orange); transform: rotate(-3deg) scale(1.06); }
+}
+.card:active { transform: scale(.98); }
+.card:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--ink); }
+@media screen {
+  html.js .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .9s var(--ease); transition-delay: calc(var(--i, 0) * 70ms); }
+  html.js .reveal.in { opacity: 1; transform: none; }
+}
+
+/* ---------- download ---------- */
+.dlband { position: relative; overflow: hidden; background: var(--orange); }
+.dlband::before { content: ""; position: absolute; right: -8%; top: -50%; width: min(48vw, 560px); aspect-ratio: 1; border-radius: 50%; background: rgba(255, 255, 255, .17); }
+.dlband::after { content: ""; position: absolute; right: 14%; bottom: -46%; width: min(26vw, 300px); aspect-ratio: 1; border-radius: 50%; background: var(--yellow); }
+.dl-in { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 28px; padding-block: clamp(52px, 8vw, 100px); }
+.dl-in h2 { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: clamp(46px, 7vw, 96px); line-height: .92; letter-spacing: .01em; }
+.dl-in h2 span { color: #fff; }
+.dl-in p { max-width: 42ch; margin-top: 16px; font-size: 16px; }
+.dl-in .btn { --btn-bg: var(--ink); --btn-fg: var(--yellow); height: 62px; padding: 0 36px; font-size: 15px; }
+
+/* ---------- footer ---------- */
+footer { background: var(--ink); color: var(--cream); overflow: hidden; }
+.foot { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 40px; padding-block: clamp(44px, 6vw, 80px) clamp(32px, 4vw, 56px); }
+.foot .word { font-size: 40px; }
+.foot .mark { width: 50px; height: 50px; }
+.foot .mark svg { width: 31px; height: 31px; }
+.foot p { max-width: 32ch; margin-top: 16px; color: rgba(255, 244, 227, .66); font-size: 15px; }
+.foot h4 { margin-bottom: 18px; font-family: var(--display); font-weight: 400; font-size: 20px; letter-spacing: .06em; text-transform: uppercase; color: var(--yellow); }
+.foot li { margin-bottom: 11px; font-size: 15px; }
+.foot li a { text-decoration: none; background: linear-gradient(var(--orange), var(--orange)) 0 100% / 0 2px no-repeat; transition: background-size .4s var(--ease), color .25s; }
+@media (hover: hover) { .foot li a:hover { background-size: 100% 2px; color: #fff; } }
+.giant { margin-top: -8px; padding-bottom: 6px; text-align: center; white-space: nowrap; font-family: var(--display); font-size: clamp(64px, 17vw, 250px); line-height: .85; text-transform: uppercase; color: rgba(255, 244, 227, .06); user-select: none; }
+.legal { display: flex; justify-content: space-between; gap: 16px; padding-block: 22px; border-top: 1px solid rgba(255, 244, 227, .14); font-size: 13px; color: rgba(255, 244, 227, .6); }
+.legal a { text-decoration: none; }
+@media (hover: hover) { .legal a:hover { color: var(--yellow); } }
+@media (max-width: 760px) { .foot { grid-template-columns: 1fr 1fr; } .foot > div:first-child { grid-column: 1 / -1; } }
+
+/* ---------- photo viewer ---------- */
+.lb { position: fixed; inset: 0; z-index: 120; display: grid; place-items: center; padding: 16px; background: rgba(23, 17, 13, .8); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); opacity: 0; visibility: hidden; transition: opacity .35s ease, visibility 0s .35s; }
+.lb.open { opacity: 1; visibility: visible; transition: opacity .35s ease; }
+.lb-card { position: relative; width: min(980px, 100%); max-height: calc(100vh - 32px); max-height: calc(100dvh - 32px); overflow: auto; display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); border-radius: 30px; background: var(--cream); transform: translateY(24px) scale(.96) rotate(-1deg); transition: transform .55s var(--ease); }
+.lb.open .lb-card { transform: none; }
+.lb-media { position: relative; aspect-ratio: 3 / 2; background: var(--tile); }
+.lb-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.lb-info { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; padding: clamp(24px, 4vw, 40px); }
+.lb-info .eyebrow { background: var(--ink); color: var(--yellow); }
+.lb-name { margin: 14px 0 4px; font-family: var(--display); font-weight: 400; font-size: clamp(34px, 4.2vw, 54px); line-height: .98; letter-spacing: .01em; text-transform: uppercase; }
+.lb-price { padding: 9px 22px; border-radius: 99px; background: var(--yellow); font: 700 22px/1.3 var(--body); font-variant-numeric: tabular-nums; }
+.lb-info .btn { --btn-bg: var(--orange); --btn-fg: var(--ink); height: 52px; margin-top: 14px; padding: 0 26px; font-size: 13px; }
+.lb-nav { display: flex; align-items: center; gap: 10px; width: 100%; margin-top: auto; padding-top: 28px; }
+.lb-count { margin-left: auto; font-size: 13px; font-weight: 600; letter-spacing: .1em; font-variant-numeric: tabular-nums; }
+.lb-x { position: absolute; top: 12px; right: 12px; z-index: 2; width: 42px; height: 42px; display: grid; place-items: center; border: 0; border-radius: 50%; background: var(--ink); color: var(--cream); cursor: pointer; transition: transform .3s var(--ease), background .25s; }
+.lb-x svg { width: 18px; height: 18px; }
+@media (hover: hover) { .lb-x:hover { background: var(--orange); color: var(--ink); transform: rotate(90deg); } }
+@media (max-width: 760px) { .lb-card { grid-template-columns: 1fr; border-radius: 24px; } }
+
+noscript p { padding: 40px 0; text-align: center; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: .01ms !important; transition-delay: 0s !important; animation: none !important; }
+  .slide .eyebrow, .slide .title, .slide .lead, .slide .btn { opacity: 1; transform: none; }
+  .shot { opacity: 1; transform: rotate(-2deg); }
+  .dot.on i::after { transform: none; }
+}
+
+/* ---------- print (Download menu) ---------- */
+.print-head { display: none; }
+@media print {
+  @page { margin: 12mm; }
+  body { background: #fff; }
+  .head, .hero, .ticker, .dlband, footer, .scrim, .drawer, .lb, .skip, .view { display: none !important; }
+  .print-head { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 10px; border-bottom: 3px solid #000; font-family: var(--display); font-size: 34px; text-transform: uppercase; }
+  .print-head span { font: 700 12px var(--body); letter-spacing: .14em; }
+  .band, .band.fries { background: #fff; padding-block: 16px 0; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+  .cat-head { margin-bottom: 14px; }
+  .cat-head h2 { font-size: 38px; }
+  .cat-head h2::after { height: 5px; margin-top: 8px; }
+  .badge { transform: none; border: 1px solid #000; background: #fff; color: #000; }
+  .grid { grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .card { break-inside: avoid; transform: none !important; box-shadow: none; border: 1px solid #bbb; }
+  .card .pic img { transform: none !important; }
+  .name { font-size: 15px; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+</style>
+</head>
+<body id="top">
+<a class="skip" href="#fast-food">Skip to menu</a>
+
+<!-- ================= SIDE MENU ================= -->
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-label="Menu" aria-hidden="true">
+  <div class="drawer-head">
+    <a class="logo" href="#top"><span class="mark"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="10.5" cy="12.5" r="4.6"/><circle cx="16" cy="10" r="5.4"/><circle cx="21.5" cy="12.5" r="4.6"/><rect x="9.5" y="13.5" width="13" height="11" rx="1.6"/></svg></span><span class="word">Chef <b>Kamran</b></span></a>
+    <button class="round" type="button" id="close" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg>
+    </button>
+  </div>
+  <nav aria-label="Main">
+    <a href="#fast-food"><small>01</small>Fast Food</a>
+    <a href="#french-fries"><small>02</small>French Fries Special</a>
+    <a href="#download"><small>03</small>Download Menu</a>
+    <a href="#contact"><small>04</small>Contact</a>
+  </nav>
+  <p class="drawer-foot">Fast food and french fries, made fresh every day.</p>
+</aside>
+
+<!-- ================= HEADER ================= -->
+<header class="head">
+  <div class="wrap hbar">
+    <button class="round menu-btn" type="button" id="burger" aria-label="Open menu" aria-controls="drawer" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <a class="logo" href="#top" aria-label="Chef Kamran, back to top">
+      <span class="mark"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="10.5" cy="12.5" r="4.6"/><circle cx="16" cy="10" r="5.4"/><circle cx="21.5" cy="12.5" r="4.6"/><rect x="9.5" y="13.5" width="13" height="11" rx="1.6"/></svg></span>
+      <span class="word">Chef <b>Kamran</b></span>
+    </a>
+    <nav class="tabs" id="tabs" aria-label="Menu sections">
+      <a href="#fast-food">Fast Food</a>
+      <a href="#french-fries">French Fries Special</a>
+      <a href="#download">Download Menu</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="round pin" id="pin" href="#contact" aria-label="Find us">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg>
+    </a>
+  </div>
+</header>
+
+<main>
+  <!-- ================= HERO ================= -->
+  <section class="hero" id="hero" data-t="1" aria-roledescription="carousel" aria-label="Highlights">
+    <div class="stage" id="stage">
+      <article class="slide s1 is-active" aria-roledescription="slide" aria-label="1 of 3">
+        <div class="wrap inner">
+          <div class="copy">
+            <p class="eyebrow">Fast food &amp; French fries</p>
+            <h1 class="title"><span>Chef</span><span class="acc">Kamran</span></h1>
+            <p class="lead">Burgers, broast, wings and loaded fries. Cooked fresh and served hot.</p>
+            <a class="btn" href="#fast-food">See the menu <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div class="shotwrap">
+            <div class="shot"><img data-n="1" alt="Zinger Burger" width="900" height="600"><span class="tag"><b>01</b>Zinger Burger</span></div>
+            <span class="sticker" aria-hidden="true">Hot!</span>
+          </div>
+        </div>
+      </article>
+      <article class="slide s2" aria-roledescription="slide" aria-label="2 of 3" aria-hidden="true">
+        <div class="wrap inner">
+          <div class="copy">
+            <p class="eyebrow">Items 01 &ndash; 12</p>
+            <h2 class="title"><span>Fast</span><span class="acc">Food</span></h2>
+            <p class="lead">Zingers, shawarma, broast, wings, drum sticks and burgers.</p>
+            <a class="btn" href="#fast-food">Browse fast food <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div class="shotwrap">
+            <div class="shot"><img data-n="10" alt="Beef Lava Cheese Burger" width="900" height="600"><span class="tag"><b>10</b>Beef Lava Cheese Burger</span></div>
+            <span class="sticker" aria-hidden="true">12 items</span>
+          </div>
+        </div>
+      </article>
+      <article class="slide s3" aria-roledescription="slide" aria-label="3 of 3" aria-hidden="true">
+        <div class="wrap inner">
+          <div class="copy">
+            <p class="eyebrow">Items 13 &ndash; 20</p>
+            <h2 class="title"><span>French Fries</span><span class="acc">Special</span></h2>
+            <p class="lead">Salted, spicy, lava, pizza and mayo garlic. Eight ways to eat fries.</p>
+            <a class="btn" href="#french-fries">Browse french fries <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div class="shotwrap">
+            <div class="shot"><img data-n="17" alt="Pizza French Fries" width="900" height="600"><span class="tag"><b>17</b>Pizza French Fries</span></div>
+            <span class="sticker" aria-hidden="true">8 ways</span>
+          </div>
+        </div>
+      </article>
+    </div>
+    <div class="wrap ctrlwrap">
+      <div class="dots" id="dots" role="tablist" aria-label="Choose slide"></div>
+      <div class="arrows">
+        <button class="arrow" type="button" id="prev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+        <button class="arrow" type="button" id="next" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </div>
+    </div>
+  </section>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>Zinger Burger</span><span>Chicken Broast</span><span>Shawarma Roll</span><span>Hot Wings</span><span>Drum Sticks</span><span>Lava Cheese Burger</span><span>Loaded Fries</span><span>Mayo Garlic Fries</span>
+      <span>Zinger Burger</span><span>Chicken Broast</span><span>Shawarma Roll</span><span>Hot Wings</span><span>Drum Sticks</span><span>Lava Cheese Burger</span><span>Loaded Fries</span><span>Mayo Garlic Fries</span>
+    </div>
+  </div>
+
+  <div class="print-head"><b>Chef Kamran</b><span>Menu</span></div>
+
+  <!-- ================= MENU ================= -->
+  <section class="band fast" id="fast-food" aria-labelledby="h-fast">
+    <div class="wrap">
+      <div class="cat-head"><h2 id="h-fast">Fast Food</h2><p class="badge">12 items</p></div>
+      <ul class="grid" id="grid-fast"></ul>
+    </div>
+  </section>
+
+  <section class="band fries" id="french-fries" aria-labelledby="h-fries">
+    <div class="wrap">
+      <div class="cat-head"><h2 id="h-fries">French Fries Special</h2><p class="badge">8 items</p></div>
+      <ul class="grid" id="grid-fries"></ul>
+    </div>
+  </section>
+
+  <noscript><div class="wrap"><p>Please turn on JavaScript to see the menu.</p></div></noscript>
+
+  <!-- ================= DOWNLOAD ================= -->
+  <section class="dlband" id="download">
+    <div class="wrap dl-in">
+      <div>
+        <h2>Take the menu <span>with you</span></h2>
+        <p>Save the full menu as a PDF, or print it. In the window that opens, choose &ldquo;Save as PDF&rdquo;.</p>
+      </div>
+      <button class="btn" type="button" id="dlbtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg>
+        Download menu
+      </button>
+    </div>
+  </section>
+</main>
+
+<!-- ================= FOOTER / CONTACT ================= -->
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="logo" href="#top"><span class="mark"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="10.5" cy="12.5" r="4.6"/><circle cx="16" cy="10" r="5.4"/><circle cx="21.5" cy="12.5" r="4.6"/><rect x="9.5" y="13.5" width="13" height="11" rx="1.6"/></svg></span><span class="word">Chef <b>Kamran</b></span></a>
+        <p>Fast food and french fries, made fresh every day.</p>
+      </div>
+      <div>
+        <h4>Menu</h4>
+        <ul>
+          <li><a href="#fast-food">Fast Food</a></li>
+          <li><a href="#french-fries">French Fries Special</a></li>
+          <li><a href="#download">Download Menu</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <!-- To fill these in, edit CONFIG near the bottom of this file (phone, whatsapp, address). -->
+          <li id="cPhone">Call: to be added</li>
+          <li id="cWa">WhatsApp: to be added</li>
+          <li id="cAddr">Address: to be added</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="giant" aria-hidden="true">Chef Kamran</div>
+  <div class="wrap">
+    <div class="legal"><span>&copy; 2026 Chef Kamran. All rights reserved.</span><a href="#top">Back to top &uarr;</a></div>
+  </div>
+</footer>
+
+<!-- ================= PHOTO VIEWER ================= -->
+<div class="lb" id="lb" aria-hidden="true">
+  <div class="lb-card" role="dialog" aria-modal="true" aria-labelledby="lbName">
+    <button class="lb-x" type="button" id="lbClose" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+    <div class="lb-media"><img id="lbImg" alt=""></div>
+    <div class="lb-info">
+      <p class="eyebrow" id="lbCat"></p>
+      <h3 class="lb-name" id="lbName"></h3>
+      <p class="lb-price" id="lbPrice"></p>
+      <a class="btn" id="lbOrder" href="#" target="_blank" rel="noopener" hidden>Order on WhatsApp</a>
+      <div class="lb-nav">
+        <button class="arrow" type="button" id="lbPrev" aria-label="Previous item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+        <button class="arrow" type="button" id="lbNext" aria-label="Next item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <span class="lb-count" id="lbCount"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>window.IMG={1:"images/1.jpg",10:"images/10.png",11:"images/11.png",12:"images/12.png",13:"images/13.jpg",14:"images/14.jpg",15:"images/15.png",16:"images/16.png",17:"images/17.jpg",18:"images/18.jpg",19:"images/19.jpg",2:"images/2.png",20:"images/20.jpg",3:"images/3.jpg",4:"images/4.png",5:"images/5.png",6:"images/6.png",7:"images/7.png",8:"images/8.jpg",9:"images/9.png"};</script>
+<script>
+(function () {
+  'use strict';
+
+  /* =====================================================================
+     EDIT HERE (1): your contact details.
+     phone:    e.g. '+92 300 1234567'
+     whatsapp: with country code, e.g. '+92 300 1234567'. When filled in, an
+               "Order on WhatsApp" button appears on every item.
+     address:  e.g. 'Shop 4, Main Road, Karachi'. When filled in, the pin icon
+               at the top opens Google Maps for this address.
+     ===================================================================== */
+  var CONFIG = { phone: '', whatsapp: '', address: '' };
+
+  /* =====================================================================
+     EDIT HERE (2): item names and prices.
+     Change the text inside price: "..." for each item, e.g. price: "Rs. 450"
+     ===================================================================== */
+  var ITEMS = [
+    { n: 1,  cat: 'fast',  name: 'Zinger Burger',                price: 'Rs. 00' },
+    { n: 2,  cat: 'fast',  name: 'Chicken Burger',               price: 'Rs. 00' },
+    { n: 3,  cat: 'fast',  name: 'Chicken Shawarma Roll',        price: 'Rs. 00' },
+    { n: 4,  cat: 'fast',  name: 'Chicken Broast',               price: 'Rs. 00' },
+    { n: 5,  cat: 'fast',  name: 'Chicken Injected Broast',      price: 'Rs. 00' },
+    { n: 6,  cat: 'fast',  name: 'Fish and Chips',               price: 'Rs. 00' },
+    { n: 7,  cat: 'fast',  name: 'Chicken Drum Sticks',          price: 'Rs. 00' },
+    { n: 8,  cat: 'fast',  name: 'Chicken Wings with Sauce',     price: 'Rs. 00' },
+    { n: 9,  cat: 'fast',  name: 'Chicken Double Decker Burger', price: 'Rs. 00' },
+    { n: 10, cat: 'fast',  name: 'Beef Lava Cheese Burger',      price: 'Rs. 00' },
+    { n: 11, cat: 'fast',  name: 'Chicken Cheese Burger',        price: 'Rs. 00' },
+    { n: 12, cat: 'fast',  name: 'Chicken Cheese Kentucky',      price: 'Rs. 00' },
+    { n: 13, cat: 'fries', name: 'Salted French Fries',          price: 'Rs. 00' },
+    { n: 14, cat: 'fries', name: 'Spicy French Fries',           price: 'Rs. 00' },
+    { n: 15, cat: 'fries', name: 'Lava French Fries',            price: 'Rs. 00' },
+    { n: 16, cat: 'fries', name: 'Butter French Fries',          price: 'Rs. 00' },
+    { n: 17, cat: 'fries', name: 'Pizza French Fries',           price: 'Rs. 00' },
+    { n: 18, cat: 'fries', name: 'Cheese Loaded Fries',          price: 'Rs. 00' },
+    { n: 19, cat: 'fries', name: 'Mayo Garlic Fries',            price: 'Rs. 00' },
+    { n: 20, cat: 'fries', name: 'Chicken Cheesy Fries',         price: 'Rs. 00' }
+  ];
+  var CATS = { fast: 'Fast Food', fries: 'French Fries Special' };
+  /* ===================================================================== */
+
+  function $(s) { return document.querySelector(s); }
+  function $$(s) { return Array.prototype.slice.call(document.querySelectorAll(s)); }
+  function pad(n) { return n < 10 ? '0' + n : String(n); }
+  function src(n) { return (window.IMG && window.IMG[n]) || 'images/' + n + '.jpg'; }
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  var root = document.documentElement;
+
+  /* ---------- contact details ---------- */
+  var waDigits = String(CONFIG.whatsapp || '').replace(/\D/g, '');
+  var hasWa = waDigits.length >= 10;
+  if (CONFIG.phone) {
+    $('#cPhone').innerHTML = 'Call: <a href="tel:' + esc(String(CONFIG.phone).replace(/[^\d+]/g, '')) + '">' + esc(CONFIG.phone) + '</a>';
+  }
+  if (hasWa) {
+    $('#cWa').innerHTML = 'WhatsApp: <a href="https://wa.me/' + waDigits + '" target="_blank" rel="noopener">' + esc(CONFIG.whatsapp) + '</a>';
+  }
+  if (CONFIG.address) {
+    $('#cAddr').textContent = 'Address: ' + CONFIG.address;
+    var pin = $('#pin');
+    pin.href = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(CONFIG.address);
+    pin.target = '_blank';
+    pin.rel = 'noopener';
+  }
+
+  /* ---------- build the menu ---------- */
+  var count = { fast: 0, fries: 0 };
+  ITEMS.forEach(function (it) {
+    var host = $(it.cat === 'fast' ? '#grid-fast' : '#grid-fries');
+    var idx = count[it.cat]++;
+    var li = document.createElement('li');
+    li.className = 'reveal';
+    li.style.setProperty('--i', idx % 4);
+    li.innerHTML =
+      '<button type="button" class="card" data-n="' + it.n + '" aria-label="' + esc(it.name + ', ' + it.price + '. Open photo') + '">' +
+        '<span class="pic">' +
+          '<img src="' + src(it.n) + '" alt="' + esc(it.name) + '" width="900" height="600" loading="lazy" decoding="async">' +
+          '<span class="num">' + pad(it.n) + '</span>' +
+          '<span class="view" aria-hidden="true">View</span>' +
+        '</span>' +
+        '<span class="body"><span class="name">' + esc(it.name) + '</span><span class="price">' + esc(it.price) + '</span></span>' +
+      '</button>';
+    host.appendChild(li);
+  });
+  $$('.pic img').forEach(function (im) {
+    im.addEventListener('error', function () { im.classList.add('missing'); });
+  });
+
+  /* ---------- scroll reveal ---------- */
+  var reveals = $$('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+    reveals.forEach(function (el) { io.observe(el); });
+  } else {
+    reveals.forEach(function (el) { el.classList.add('in'); });
+  }
+
+  /* ---------- scroll lock helper ---------- */
+  var locks = 0;
+  function lock(on) {
+    locks = Math.max(0, locks + (on ? 1 : -1));
+    root.classList.toggle('lock', locks > 0);
+  }
+
+  /* ---------- side menu ---------- */
+  var drawer = $('#drawer'), burger = $('#burger'), scrim = $('#scrim'), closeBtn = $('#close');
+  var drawerOpen = false;
+  function openDrawer() {
+    if (drawerOpen) return;
+    drawerOpen = true;
+    document.body.classList.add('drawer-open');
+    drawer.setAttribute('aria-hidden', 'false');
+    burger.setAttribute('aria-expanded', 'true');
+    lock(true);
+    setTimeout(function () { closeBtn.focus(); }, 60);
+  }
+  function closeDrawer(returnFocus) {
+    if (!drawerOpen) return;
+    drawerOpen = false;
+    document.body.classList.remove('drawer-open');
+    drawer.setAttribute('aria-hidden', 'true');
+    burger.setAttribute('aria-expanded', 'false');
+    lock(false);
+    if (returnFocus) burger.focus();
+  }
+  burger.addEventListener('click', openDrawer);
+  closeBtn.addEventListener('click', function () { closeDrawer(true); });
+  scrim.addEventListener('click', function () { closeDrawer(true); });
+  $$('#drawer nav a, #drawer .logo').forEach(function (a) {
+    a.addEventListener('click', function () { closeDrawer(false); });
+  });
+
+  /* ---------- photo viewer ---------- */
+  var lb = $('#lb'), lbImg = $('#lbImg'), lbCat = $('#lbCat'), lbName = $('#lbName');
+  var lbPrice = $('#lbPrice'), lbCount = $('#lbCount'), lbClose = $('#lbClose'), lbOrder = $('#lbOrder');
+  var lbIndex = 0, lbOpen = false, lastFocus = null;
+  function showItem(i) {
+    lbIndex = (i + ITEMS.length) % ITEMS.length;
+    var it = ITEMS[lbIndex];
+    lbImg.src = src(it.n);
+    lbImg.alt = it.name;
+    lbCat.textContent = 'No. ' + pad(it.n) + ' \u00B7 ' + CATS[it.cat];
+    lbName.textContent = it.name;
+    lbPrice.textContent = it.price;
+    lbCount.textContent = pad(it.n) + ' / ' + ITEMS.length;
+    if (hasWa) {
+      lbOrder.hidden = false;
+      lbOrder.href = 'https://wa.me/' + waDigits + '?text=' + encodeURIComponent('Hi Chef Kamran, I would like to order: ' + it.name);
+    } else {
+      lbOrder.hidden = true;
+    }
+  }
+  function openViewer(n) {
+    var i = 0;
+    ITEMS.forEach(function (it, k) { if (it.n === n) i = k; });
+    lastFocus = document.activeElement;
+    showItem(i);
+    lbOpen = true;
+    lb.classList.add('open');
+    lb.setAttribute('aria-hidden', 'false');
+    lock(true);
+    lbClose.focus();
+  }
+  function closeViewer() {
+    if (!lbOpen) return;
+    lbOpen = false;
+    lb.classList.remove('open');
+    lb.setAttribute('aria-hidden', 'true');
+    lock(false);
+    if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
+  }
+  document.addEventListener('click', function (e) {
+    var card = e.target.closest ? e.target.closest('.card') : null;
+    if (card) openViewer(parseInt(card.getAttribute('data-n'), 10));
+  });
+  lbClose.addEventListener('click', closeViewer);
+  lb.addEventListener('click', function (e) { if (e.target === lb) closeViewer(); });
+  $('#lbPrev').addEventListener('click', function () { showItem(lbIndex - 1); });
+  $('#lbNext').addEventListener('click', function () { showItem(lbIndex + 1); });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      if (lbOpen) closeViewer();
+      else if (drawerOpen) closeDrawer(true);
+      return;
+    }
+    if (lbOpen) {
+      if (e.key === 'ArrowLeft') showItem(lbIndex - 1);
+      else if (e.key === 'ArrowRight') showItem(lbIndex + 1);
+      else if (e.key === 'Tab') {
+        var f = [lbClose, $('#lbPrev'), $('#lbNext')];
+        if (!lbOrder.hidden) f.splice(1, 0, lbOrder);
+        var pos = f.indexOf(document.activeElement);
+        if (e.shiftKey && pos <= 0) { e.preventDefault(); f[f.length - 1].focus(); }
+        else if (!e.shiftKey && pos === f.length - 1) { e.preventDefault(); f[0].focus(); }
+        else if (pos === -1) { e.preventDefault(); f[0].focus(); }
+      }
+    }
+  });
+
+  /* ---------- hero carousel ---------- */
+  var hero = $('#hero'), stage = $('#stage'), dotsHost = $('#dots');
+  var slides = $$('.slide'), dots = [], cur = 0, DUR = 6500;
+  hero.style.setProperty('--dur', DUR + 'ms');
+  $$('.shot img[data-n]').forEach(function (im) { im.src = src(parseInt(im.getAttribute('data-n'), 10)); });
+  slides.forEach(function (s, i) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'dot';
+    b.setAttribute('role', 'tab');
+    b.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+    b.innerHTML = '<i></i>';
+    b.addEventListener('click', function () { go(i); });
+    dotsHost.appendChild(b);
+    dots.push(b);
+  });
+  function go(i) {
+    var next = (i + slides.length) % slides.length;
+    if (next === cur && slides[cur].classList.contains('is-active') && dots[cur].classList.contains('on')) return;
+    cur = next;
+    hero.setAttribute('data-t', String(cur + 1));
+    slides.forEach(function (s, k) {
+      var on = k === cur;
+      s.classList.toggle('is-active', on);
+      s.setAttribute('aria-hidden', on ? 'false' : 'true');
+    });
+    dots.forEach(function (d, k) {
+      var on = k === cur;
+      d.classList.toggle('on', on);
+      d.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+  }
+  go(0);
+  dotsHost.addEventListener('animationend', function (e) {
+    var dot = e.target && e.target.parentNode;
+    if (dot && dot.classList && dot.classList.contains('on')) go(cur + 1);
+  });
+  $('#prev').addEventListener('click', function () { go(cur - 1); });
+  $('#next').addEventListener('click', function () { go(cur + 1); });
+  function pause(on) { hero.classList.toggle('paused', on); }
+  stage.addEventListener('mouseenter', function () { pause(true); });
+  stage.addEventListener('mouseleave', function () { pause(false); });
+  hero.addEventListener('focusin', function (e) {
+    var kb = false;
+    try { kb = e.target.matches(':focus-visible'); } catch (err) { kb = false; }
+    if (kb) pause(true);
+  });
+  hero.addEventListener('focusout', function () { pause(false); });
+  hero.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft') go(cur - 1);
+    else if (e.key === 'ArrowRight') go(cur + 1);
+  });
+  var tx = 0, ty = 0;
+  stage.addEventListener('touchstart', function (e) {
+    tx = e.touches[0].clientX; ty = e.touches[0].clientY; pause(true);
+  }, { passive: true });
+  stage.addEventListener('touchend', function (e) {
+    var dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) go(dx < 0 ? cur + 1 : cur - 1);
+    pause(false);
+  }, { passive: true });
+
+  /* ---------- active tab while scrolling ---------- */
+  var tabLinks = $$('#tabs a');
+  var targets = tabLinks.map(function (a) { return $(a.getAttribute('href')); });
+  var ticking = false, lastActive = -2;
+  function spy() {
+    ticking = false;
+    var head = $('.head').offsetHeight;
+    var line = head + 40 + window.innerHeight * 0.15, active = -1;
+    targets.forEach(function (t, i) { if (t && t.getBoundingClientRect().top <= line) active = i; });
+    if (window.innerHeight + window.pageYOffset >= document.documentElement.scrollHeight - 4) active = targets.length - 1;
+    if (active === lastActive) return;
+    lastActive = active;
+    var box = $('#tabs');
+    tabLinks.forEach(function (a, i) {
+      var on = i === active;
+      a.classList.toggle('on', on);
+      if (on) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
+      if (on && box.scrollWidth > box.clientWidth) {
+        box.scrollTo({ left: a.offsetLeft - (box.clientWidth - a.offsetWidth) / 2, behavior: 'smooth' });
+      }
+    });
+  }
+  window.addEventListener('scroll', function () {
+    if (!ticking) { ticking = true; window.requestAnimationFrame(spy); }
+  }, { passive: true });
+  window.addEventListener('resize', spy);
+  spy();
+
+  /* ---------- download menu ---------- */
+  $('#dlbtn').addEventListener('click', function () { window.print(); });
+})();
+</script>
+</body>
+</html>
